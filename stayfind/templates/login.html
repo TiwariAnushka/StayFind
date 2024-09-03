@@ -1,0 +1,134 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <link rel="stylesheet" href="{% static 'CSS/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'CSS/style.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        .bg-myWhite { background-color: #FBF7ED; }
+        .text-myBlack { color: #6B7177; }
+        .text-myGreen { color: #004C3F; }
+        .bg-myGreen { background-color: #004C3F; }
+        .bg-myGreen1 { background-color: #008060; }
+        .text-myBlack { color: #6B7177; }
+        /* .navbar-brand {
+            max-height: 40px; 
+            width: auto;  
+        } */
+        /* .navbar-brand {
+            display: inline-block; 
+            height: 100%; 
+        }
+
+        .navbar-brand img {
+            max-height: 40px; 
+            width: auto; 
+        } */
+
+        /* Global Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #FBF7ED; /* Keeping the background color */
+            color: #6B7177; /* Default text color */
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        h5 {
+            color: #004C3F; /* Headings in a matching color */
+            font-weight: 600;
+        }
+
+        /* Navbar Branding */
+        .navbar-brand {
+            display: inline-block;
+            height: 60px; /* Increased height for a better look */
+        }
+
+        .navbar-brand img {
+            max-height: 50px; /* Adjust image height */
+            width: auto; /* Maintain aspect ratio */
+        }
+
+        /* Form Styles */
+        .shadow {
+            border-radius: 10px; /* Rounded corners for a modern look */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            background-color: #ffffff; /* White background for the form container */
+        }
+
+        .form-control {
+            border-radius: 5px; /* Rounded corners for form inputs */
+            border: 1px solid #ddd; /* Subtle border */
+            box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1); /* Inner shadow for input fields */
+            padding: 10px; /* Increased padding */
+        }
+
+        .form-label {
+            color: #004C3F; /* Label color to match the theme */
+        }
+
+        .btn-danger {
+            background-color: #004C3F; /* Button color */
+            border: none; /* Remove border */
+            border-radius: 5px; /* Rounded corners */
+            padding: 10px 20px; /* Padding for a more comfortable click area */
+            color: white; /* Text color */
+            font-weight: 600; /* Bolder text */
+        }
+
+        .btn-danger:hover {
+            background-color: #008060; /* Slightly lighter green on hover */
+            color: white; /* Ensure text remains white on hover */
+        }
+
+        /* Link Styles */
+        a {
+            color: #004C3F; /* Link color */
+            text-decoration: none; /* Remove underline */
+        }
+
+        a:hover {
+            text-decoration: underline; /* Underline on hover for better accessibility */
+        }
+
+    </style>
+</head>
+<body class="bg-myWhite">
+    <div class="container mt-5">
+        <div class="row ">
+            <div class="col-md-5 mx-auto shadow p-3 mt-5">
+                {% if errmsg %}
+                    <div class="alert alert-danger" role="alert">
+                        {{errmsg}}
+                    </div>
+                {% endif %}
+                <h5>User Login</h5><hr>
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="mb-2">
+                        <label for="Input1" class="form-label">Username:</label>
+                        <input type="text" class="form-control" id="Input1" name='uname'>
+                    </div>
+                    <div class="mb-2">
+                        <label for="Input3" class="form-label">Password:</label>
+                        <input type="password" class="form-control" id="Input3" name='upass'>
+                    </div>
+                    <div class="mb-2">
+                        <input type="submit" value="Login" class="btn btn-danger">
+                        &nbsp;&nbsp; New User? &nbsp;&nbsp; <a href="/register">Register</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="{% static 'JS/bootstrap.min.js' %}"></script>
+    <script src="{% static 'JS/popper.js' %}"></script>
+</body>
+</html>

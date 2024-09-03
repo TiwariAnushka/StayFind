@@ -1,0 +1,166 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block 'main' %}
+
+<style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f8f9fa;
+    }
+  
+    .carousel-inner img {
+      width: 100%;
+      height: auto;
+      max-height: 500px;
+      object-fit: cover;
+    }
+  
+    .bg-white {
+      background-color: #ffffff !important;
+    }
+  
+    .shadow-sm {
+      box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+    }
+  
+    .rounded {
+      border-radius: 0.25rem !important;
+    }
+  
+    .btn {
+      transition: background-color 0.3s ease;
+    }
+  
+    .btn-primary,
+    .btn-success,
+    .btn-secondary {
+      margin-bottom: 10px;
+    }
+  
+    .form-label {
+      font-weight: bold;
+    }
+  
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+      background-color: #000;
+      border-radius: 50%;
+    }
+  
+    .p-3 {
+      padding: 1rem !important;
+    }
+  
+    .p-4 {
+      padding: 1.5rem !important;
+    }
+  
+    .mb-3 {
+      margin-bottom: 1rem !important;
+    }
+  
+    .mb-4 {
+      margin-bottom: 1.5rem !important;
+    }
+  
+    .w-100 {
+      width: 100% !important;
+    }
+  
+    .me-2 {
+      margin-right: 0.5rem !important;
+    }
+  
+    .d-flex {
+      display: flex !important;
+    }
+  
+    .flex-grow-1 {
+      flex-grow: 1 !important;
+    }
+  </style>
+  
+  
+  <div class="container mt-5">
+    <!-- Success and Error Messages -->
+    {% if success %}
+    <div class="alert alert-success" role="alert">
+        {{success}}
+    </div>
+    {% endif %}
+    {% if errmsg %}
+    <div class="alert alert-danger" role="alert">
+        {{errmsg}}
+    </div>
+    {% endif %}
+
+    <div class="row mt-3">
+        <!-- Product Section -->
+        {% for i in data %}
+        <div class="col-md-12 mb-4">
+            <div class="row bg-white rounded shadow-sm p-3">
+                <!-- Image Section -->
+                <div class="col-md-6">
+                    <div id="carouselExample{{ forloop.counter }}" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <!-- Slide 1 (Active) -->
+                            <div class="carousel-item active">
+                                <img src="{{i.pimage.url}}" class="d-block w-100 rounded" alt="Image 1">
+                            </div>
+                            <!-- Slide 2 -->
+                            <div class="carousel-item">
+                                <img src="{{i.pimage2.url}}" class="d-block w-100 rounded" alt="Image 2">
+                            </div>
+                        </div>
+                        <!-- Carousel Controls -->
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample{{ forloop.counter }}" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample{{ forloop.counter }}" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Details Section -->
+                <div class="col-md-6 d-flex flex-column justify-content-center">
+                    <div class="p-3">
+                        <h4 class="mb-3">{{i.name}}</h4>
+                        {% if i.city == 1 %}
+                        <p><strong>City:</strong> Delhi</p>
+                        {% elif i.city == 2 %}
+                        <p><strong>City:</strong> Pune</p>
+                        {% elif i.city == 3 %}
+                        <p><strong>City:</strong> Bangalore</p>
+                        {% else %}
+                        <p><strong>City:</strong> Mumbai</p>
+                        {% endif %}
+                        <p><strong>Price (per person):</strong> Rs. {{i.price}}</p>
+                        <p>{{i.para}}</p>
+                        <form class="mb-3" method="post" action="/addtocart/{{i.id}}">
+                            {% csrf_token %}
+                            <div class="form-group mb-3">
+                                <label for="checkin" class="form-label"><strong>Check-in:</strong></label>
+                                <input type="date" id="checkin" name="checkin" class="form-control" required>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="checkout" class="form-label"><strong>Check-out:</strong></label>
+                                <input type="date" id="checkout" name="checkout" class="form-control" required>
+                            </div>
+                            <button type="submit" class="btn btn-success w-100">Proceed Now</button>
+                        </form>
+                        <div class="d-flex">
+                            <a href="/cart" class="btn btn-primary flex-grow-1 me-2">View Bookings</a>
+                            <a href="/product" class="btn btn-secondary flex-grow-1">Book More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock 'main' %}

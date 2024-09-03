@@ -1,0 +1,44 @@
+a{
+    text-decoration: none;
+}
+
+
+        .bg-myWhite { background-color: #FBF7ED; }
+        .text-myBlack { color: #6B7177; }
+        .text-myGreen { color: #004C3F; }
+        .bg-myGreen { background-color: #004C3F; }
+        .bg-myGreen1 { background-color: #008060; }
+        .text-myBlack { color: #6B7177; }
+        /* .navbar-brand {
+            max-height: 40px; 
+            width: auto;  
+        } */
+        .navbar-brand {
+            display: inline-block; /* Ensure it behaves as a block element */
+            height: 100%; /* Set height to 100% of the navbar */
+        }
+
+        .navbar-brand img {
+            max-height: 40px; /* Make the image fill the height of the navbar */
+            width: auto; /* Maintain aspect ratio */
+        }
+
+        body {
+            padding-top: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .jumbotron {
+            background-color: #f8f9fa;
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-text {
+            font-size: 1.2rem;
+        }
+
+    

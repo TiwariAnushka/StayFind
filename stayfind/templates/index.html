@@ -1,0 +1,140 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block 'main' %}
+<section class="bg-myWhite">
+    <div class="container pb-4">
+        <div class="row align-items-center">
+            <div class="col-lg-6 order-lg-1 order-2">
+                <div class="mt-4">
+                    <h1 class="display-4 text-myGreen font-bold">
+                        The easiest way to BOOK HOTELS in India
+                    </h1>
+                </div>
+                <div class="mt-3">
+                    <p class="lead text-myBlack">
+                        Welcome to STAYFIND, where luxury meets comfort.
+                    </p>
+                </div>
+                <div class="mt-3 d-flex flex-column flex-sm-row gap-2">
+                    <input type="text" placeholder="Enter your Email Address" class="form-control">
+                    <button class="btn bg-myGreen1 text-white font-bold">
+                        Notify Us
+                    </button>
+                </div>
+                <div class="mt-2">
+                    <p class="text-myBlack">
+                        Discover our world-class amenities, elegant accommodations, and breathtaking views.
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-6 order-lg-2 order-1 text-center">
+                <img src="{% static 'Images/main_hotel.jpg' %}" class="img-fluid" alt="" style="width: 100%; height: auto;">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="bg-success">
+    <div class="container py-5">
+        <!-- Heading Section -->
+        <div class="mb-5">
+            <h1 class="text-white display-5">Commitment to Excellence</h1>
+            <div class="d-flex flex-column flex-xxl-row">
+                <div class="text-white">
+                    We are committed to providing unparalleled service, ensuring every guest feels valued and cared for throughout their stay.
+                </div>
+                <!-- <div class="flex-grow-1 d-flex justify-content-xxl-end">
+                    <a href="#" class="text-white fw-bold">Explore more examples <i class="fas fa-arrow-right"></i></a>
+                </div> -->
+            </div>
+        </div>
+        <!-- Image Section -->
+        <div class="row g-4" style="width: 100%; height: auto;">
+            <div class="col-md-3">
+                <img src="{% static 'Images/food.jpg' %}" alt="" class="img-fluid">
+                <a href="#" class="d-block text-white fw-bold">FOOD</a>
+                <!-- <p class="text-white fw-bold">Food</p> -->
+            </div>
+            <div class="col-md-3">
+                <img src="{% static 'Images/spa.jpg' %}" alt="" class="img-fluid">
+                <a href="#" class="d-block text-white fw-bold">SPA</a>
+                <!-- <p class="text-white fw-bold">Spa</p> -->
+            </div>
+            <div class="col-md-3">
+                <img src="{% static 'Images/pool.jpg' %}" alt="" class="img-fluid">
+                <a href="#" class="d-block text-white fw-bold">POOL</a>
+                <p class="text-white fw-bold"></p>
+            </div>
+            <div class="col-md-3 d-none d-md-block">
+                <img src="{% static 'Images/gym.jpg' %}" alt="" class="img-fluid">
+                <a href="#" class="d-block text-white fw-bold">GYM & FITNESS CENTER</a>
+                <p class="text-white fw-bold"></p>
+            </div>
+            <div class="col-md-3 d-none d-lg-block">
+                <img src="{% static 'Images/parking.jpg' %}" alt="" class="img-fluid">
+                <a href="#" class="d-block text-white fw-bold">PARKING</a>
+                <p class="text-white fw-bold"></p>
+            </div>
+            <div class="col-md-3 d-none d-lg-block">
+                <img src="{% static 'Images/bar.jpg' %}" alt="" class="img-fluid">
+                <a href="#" class="d-block text-white fw-bold">BAR</a>
+                <!-- <p class="text-white fw-bold">Bunaai</p> -->
+            </div>
+            <div class="col-md-3 d-none d-lg-block">
+                <img src="{% static 'Images/themed_tour.jpg' %}" alt="" class="img-fluid">
+                <a href="#" class="d-block text-white fw-bold">THEMED TOUR IN CITY</a>
+                <!-- <p class="text-white fw-bold">Bunaai</p> -->
+            </div>
+        </div>
+    </div>
+
+<!-- Online Services -->
+<section class="container my-5">
+    <h2 class="text-white">Take the best path forward</h2>
+    <div class="row g-4" style="width: 100%; height: auto;" >
+        <div class="col-md-6 col-lg-3">
+            <img src="{% static 'Images/mobile_optimazation.png' %}" class="img-fluid" alt="">
+            <p class="fw-bold text-white">Mobile Optimization</p>
+            <p class="text-white">A responsive and user-friendly mobile website or app for booking on the go.</p>
+        </div>
+        <div class="col-md-6 col-lg-3">
+            <img src="{% static 'Images/customer_support.png' %}" class="img-fluid" alt="">
+            <p class="fw-bold text-white">Customer Support</p>
+            <p class="text-white">Accessible customer support via chat, email, or phone for assistance with bookings, changes, or inquiries.</p>
+        </div>
+        <div class="col-md-6 col-lg-3">
+            <img src="{% static 'Images/offer.png' %}" class="img-fluid" alt="">
+            <p class="fw-bold text-white">Special Offers and Deals</p>
+            <p class="text-white">Promotions, discounts, and exclusive deals to attract users and provide value.</p>
+        </div>
+        <div class="col-md-6 col-lg-3">
+            <img src="{% static 'Images/secure_payments.jpg' %}" class="img-fluid" alt="">
+            <p class="fw-bold text-white">Secure Payment Options</p>
+            <p class="text-white">Secure and convenient payment methods to ensure user confidence in booking.</p>
+        </div>
+    </div>
+</section>
+</section>
+<!-- Explore more Section -->
+
+    <div class="container mb-5">
+        <!-- Global owners -->
+        <div class="mb-5">
+            <h2 class="font-weight-normal text-2xl">Millions of people belives in our 
+                facilities.</h2>
+            <p class="lead">Choose from our range of meticulously designed rooms and suites.</p>
+            <!-- <div>
+                <a href="#" class="text-myGreen1 font-weight-bold">Learn more about Shopify</a>
+                <svg class="ml-2 fill-myGreen1" style="width: 24px; height: 24px;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                    <path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/>
+                </svg>
+            </div> -->
+        </div>
+
+        <!-- Globe Animation video -->
+        <div class="text-center mb-5">
+            <img src="{% static 'Images/globe.gif' %}" class="img-fluid" alt="">
+        </div>
+    </div>
+</section>
+{% endblock 'main' %}

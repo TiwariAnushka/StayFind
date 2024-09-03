@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% block 'main' %}
+<div class="row mt-3">
+    <div class="col-md-5 mx-auto">
+        <div class="success-container">
+            <h1>Payment Successful</h1>
+            <h3>Thanks for Shopping</h3>
+            <h5>Visit Again</h5>
+            <a href="/product"><button class="btn btn-success">Shop More</button></a>
+        </div>
+    </div>
+</div>
+<style>
+    .success-container {
+        background: #ffffff;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        max-width: 500px;
+        margin: 0 auto;
+    }
+
+    .success-container h1 {
+        font-size: 28px;
+        color: #333;
+        margin-bottom: 20px;
+        font-weight: bold;
+    }
+
+    .success-container h3 {
+        font-size: 22px;
+        color: #555;
+        margin-bottom: 15px;
+    }
+
+    .success-container h5 {
+        font-size: 18px;
+        color: #777;
+        margin-bottom: 25px;
+    }
+
+    .success-container .btn-success {
+        background-color: #28a745;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 12px 25px;
+        font-size: 18px;
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.2s;
+    }
+
+    .success-container .btn-success:hover {
+        background-color: #218838;
+    }
+
+    .success-container .btn-success:active {
+        transform: scale(0.98);
+    }
+</style>
+{% endblock 'main' %}
