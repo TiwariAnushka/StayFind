@@ -38,6 +38,8 @@ EMAIL_HOST_USER='anushkatiwari1212@gmail.com'
 EMAIL_HOST_PASSWORD='hlzj qppj mcia wuzp'
 EMAIL_USE_TLS=True
 EMAIL_BACKEND='django.core.mail.backends.smtp.EmailBackend'
+DEFAULT_FROM_EMAIL = 'anushka.tiwari1264@gmail.com'
+
 
 # Application definition
 
@@ -67,6 +69,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        # 'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -134,6 +137,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS=[os.path.join(BASE_DIR, 'static')]
+# STATICFILES_DIRS = [BASE_DIR / 'static']
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 

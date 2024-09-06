@@ -15,15 +15,20 @@
         .bg-myGreen { background-color: #004C3F; }
         .bg-myGreen1 { background-color: #008060; }
         .text-myBlack { color: #6B7177; }
+        /* .navbar-brand {
+            max-height: 40px; 
+            width: auto;  
+        } */
         .navbar-brand {
-            display: inline-block;
-            height: 100%;
+            display: inline-block; /* Ensure it behaves as a block element */
+            height: 100%; /* Set height to 100% of the navbar */
         }
 
         .navbar-brand img {
-            max-height: 40px;
-            width: auto;
+            max-height: 40px; /* Make the image fill the height of the navbar */
+            width: auto; /* Maintain aspect ratio */
         }
+
     </style>
 </head>
 <body class="bg-myWhite">
@@ -44,7 +49,7 @@
                 {% endif %}
 
                 <h5>User Registration</h5><hr>
-                <form method="post" onsubmit="return validateForm()">
+                <form method="post">
                     {% csrf_token %}
                     <div class="mb-2">
                         <label for="Input1" class="form-label">Username:</label>
@@ -77,33 +82,5 @@
     </div>
     <script src="{% static 'JS/bootstrap.min.js' %}"></script>
     <script src="{% static 'JS/popper.js' %}"></script>
-
-    <script>
-        function validateForm() {
-            // Validate Username: Should not start with a number
-            var username = document.getElementById('Input1').value;
-            var usernameRegex = /^[A-Za-z]/; // Only allows starting with a letter
-
-            if (!usernameRegex.test(username)) {
-                alert('Username should not start with a number.');
-                return false;
-            }
-            //Should start with 6, 7, 8, or 9, and should not contain consecutive zeros
-            var mobile = document.getElementById('Input5').value;
-            var mobileRegex = /^[6-9]\d{9}$/; // Starts with 6, 7, 8, or 9 and is exactly 10 digits
-            var consecutiveZeroRegex = /00+/; // Checks for consecutive zeros
-
-            if (!mobileRegex.test(mobile)) {
-                alert('Mobile number should start with 6, 7, 8, or 9 and should be 10 digits long.');
-                return false;
-            }
-
-            if (consecutiveZeroRegex.test(mobile)) {
-                alert('Mobile number should not contain consecutive zeros.');
-                return false;
-            }
-            return true; // If all validations pass
-        }
-    </script>
 </body>
 </html>

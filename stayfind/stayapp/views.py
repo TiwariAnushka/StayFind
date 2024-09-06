@@ -1,5 +1,5 @@
 from datetime import datetime
-
+from django.conf import settings
 from django.shortcuts import render, HttpResponse, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
@@ -30,18 +30,22 @@ def register(request):
         e=request.POST['email']
         p=request.POST['upass']
         cp=request.POST['ucpass']
+        mob=request.POST['mobile_no']
 
     context={}
-    if n=='' or e=='' or p=='' or cp=='': 
-        context['errmsg']='Please enter the requed field'
+    if n=='' or e=='' or p=='' or cp=='' or mob=='': 
+        context['errmsg']='Please fill in all the required fields.'
     
     elif p!=cp:
         # print("Both the password are not same")
-        context['errmsg']="Both the password are not same"
+        context['errmsg']="Both passwords must match."
 
     elif len(p)<8:
         # print("Length should be grater than 8")
-        context['errmsg']="Length should be grater than 8"
+        context['errmsg']="Password length should be at least 8 character."
+
+    elif User.objects.filter(email=e).exists():
+        context['errmsg'] = "This email is already registered. Please use a different email."
 
     else:
         u=User.objects.create(username=n, email=e)

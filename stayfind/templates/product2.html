@@ -55,6 +55,14 @@
     border-top-right-radius: 0.25rem !important;
   }
 
+  .filter-container {
+    margin-bottom: 20px;
+  }
+
+  .btn-group .btn + .btn {
+    margin-left: 10px;
+  }
+
   .container {
     max-width: 1200px;
   }
@@ -67,76 +75,63 @@
     background-color: #343a40;
     border-color: #343a40;
   }
-
-  /* Custom dropdown styles */
-  .dropdown {
-    position: relative;
-    display: inline-block;
-    margin-right: 10px; /* Spacing between dropdowns */
-  }
-
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-  }
-
-  .dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-  }
-
-  .dropdown-content a:hover {
-    background-color: #f1f1f1;
-  }
-
-  .dropdown:hover .dropdown-content {
-    display: block;
-  }
-
-  /* Flex container for filters */
-  .filter-container {
-    margin-bottom: 20px;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-  }
 </style>
 
 <!-- Main content starts -->
 <div class="container mt-5">
   <!-- Filter options at the top -->
-  <div class="filter-container">
-    <div class="dropdown">
-      <button class="btn btn-dark dropdown-toggle" type="button">Select City</button>
-      <div class="dropdown-content">
-        <a href="/product">All</a>
-        <a href="/city/1">Delhi</a>
-        <a href="/city/2">Pune</a>
-        <a href="/city/3">Bangalore</a>
-        <a href="/city/4">Mumbai</a>
-      </div>
+  <div class="filter-container d-flex justify-content-between align-items-center mb-4">
+    <div class="btn-group" role="group">
+      <!-- Filter by City buttons -->
+      <a href="/product" class="btn btn-dark">All Cities</a>
+      <a href="/city/1" class="btn btn-dark">Delhi</a>
+      <a href="/city/2" class="btn btn-dark">Pune</a>
+      <a href="/city/3" class="btn btn-dark">Bangalore</a>
+      <a href="/city/4" class="btn btn-dark">Mumbai</a>
     </div>
 
-    <div class="dropdown">
-      <button class="btn btn-dark dropdown-toggle" type="button">Sort by Price</button>
-      <div class="dropdown-content">
-        <a href="/sort/1">High To Low</a>
-        <a href="/sort/0">Low to High</a>
-      </div>
+    <!-- Sort by Price buttons -->
+    <div class="btn-group" role="group">
+      <a href="/sort/1" class="btn btn-dark">High to Low</a>
+      <a href="/sort/0" class="btn btn-dark">Low to High</a>
     </div>
 
+    <!-- Filter by Price form -->
     <form action="/pricefilter" method="get" class="d-flex">
       <input type="text" class="form-control me-2" id="Input1" name="min" placeholder="Min Price">
       <input type="text" class="form-control me-2" id="Input2" name="max" placeholder="Max Price">
       <input type="submit" value="Filter" class="btn btn-dark">
     </form>
   </div>
+
+  <div class="filter-container d-flex justify-content-between align-items-center mb-4">
+    <!-- Dropdown Filter by City -->
+    <div class="btn-group">
+      <button type="button" class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+        Select City
+      </button>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="/city/1">Delhi</a></li>
+        <li><a class="dropdown-item" href="/city/2">Pune</a></li>
+        <li><a class="dropdown-item" href="/city/3">Bangalore</a></li>
+        <li><a class="dropdown-item" href="/city/4">Mumbai</a></li>
+      </ul>
+    </div>
+
+    <!-- Sort by Price buttons -->
+    <div class="btn-group" role="group">
+      <a href="/sort/1" class="btn btn-dark">High to Low</a>
+      <a href="/sort/0" class="btn btn-dark">Low to High</a>
+    </div>
+
+    <!-- Filter by Price form -->
+    <form action="/pricefilter" method="get" class="d-flex">
+      <input type="text" class="form-control me-2" id="Input1" name="min" placeholder="Min Price">
+      <input type="text" class="form-control me-2" id="Input2" name="max" placeholder="Max Price">
+      <input type="submit" value="Filter" class="btn btn-dark">
+    </form>
+</div>
+
 
   <div class="row">
     <!-- Product list starts -->
@@ -155,7 +150,7 @@
             <img src="{{i.pimage.url}}" class="card-img-top rounded-top" alt="{{i.name}}" style="height: 200px; object-fit: cover;">
             <div class="card-body d-flex flex-column">
               <h5 class="card-title">{{i.name}}</h5>
-              <p class="card-text"><strong>Price:</strong> Rs. {{i.price}}/ Per Room</p>
+              <p class="card-text"><strong>Price:</strong> Rs. {{i.price}}/ Per Person</p>
               <a href="/products/{{i.id}}" class="btn btn-dark mt-auto">See Details</a>
             </div>
           </div>
