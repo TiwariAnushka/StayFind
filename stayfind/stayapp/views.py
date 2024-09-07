@@ -21,39 +21,81 @@ def product(request):
 def about(request):
     return render(request, 'about.html')
 
+# def register(request):
+#     if request.method=='GET':
+#         return render(request, 'register.html')
+    
+#     else:
+#         n=request.POST['uname']
+#         e=request.POST['email']
+#         p=request.POST['upass']
+#         cp=request.POST['ucpass']
+#         mob=request.POST['mobile_no']
+
+#     context={}
+#     if n=='' or e=='' or p=='' or cp=='' or mob=='': 
+#         context['errmsg']='Please fill in all the required fields.'
+    
+#     elif p!=cp:
+#         # print("Both the password are not same")
+#         context['errmsg']="Both passwords must match."
+
+#     elif len(p)<8:
+#         # print("Length should be grater than 8")
+#         context['errmsg']="Password length should be at least 8 character."
+
+#     elif User.objects.filter(email=e).exists():
+#         context['errmsg'] = "This email is already registered. Please use a different email."
+
+#     else:
+#         u=User.objects.create(username=n, email=e)
+#         u.set_password(p)
+#         u.save()
+#         context['success']='User Created Successfully..!!!!'
+    
+#     return render (request, 'register.html', context)
+
+from django.contrib.auth.models import User
+from .models import UserProfile
+from django.shortcuts import render, redirect
+
 def register(request):
-    if request.method=='GET':
-        return render(request, 'register.html')
-    
-    else:
-        n=request.POST['uname']
-        e=request.POST['email']
-        p=request.POST['upass']
-        cp=request.POST['ucpass']
-        mob=request.POST['mobile_no']
+    if request.method == 'POST':
+        username = request.POST['uname']
+        email = request.POST['email']
+        password = request.POST['upass']
+        confirm_password = request.POST['ucpass']
+        mobile_number = request.POST['mobile_no']
 
-    context={}
-    if n=='' or e=='' or p=='' or cp=='' or mob=='': 
-        context['errmsg']='Please fill in all the required fields.'
-    
-    elif p!=cp:
-        # print("Both the password are not same")
-        context['errmsg']="Both passwords must match."
+        context = {}
 
-    elif len(p)<8:
-        # print("Length should be grater than 8")
-        context['errmsg']="Password length should be at least 8 character."
+        # Basic form validation
+        if username == '' or email == '' or password == '' or confirm_password == '' or mobile_number == '':
+            context['errmsg'] = 'Please fill in all required fields.'
+        elif password != confirm_password:
+            context['errmsg'] = 'Passwords do not match.'
+        elif len(password) < 8:
+            context['errmsg'] = 'Password must be at least 8 characters long.'
+        elif User.objects.filter(email=email).exists():
+            context['errmsg'] = 'This email is already registered. Please use a different email.'
+        elif UserProfile.objects.filter(phone_number=mobile_number).exists():
+            context['errmsg'] = 'This phone number is already registered.'
+        else:
+            # Create a new user
+            user = User.objects.create(username=username, email=email)
+            user.set_password(password)
+            user.save()
 
-    elif User.objects.filter(email=e).exists():
-        context['errmsg'] = "This email is already registered. Please use a different email."
+            # Create a UserProfile with mobile number
+            profile = UserProfile(user=user, phone_number=mobile_number)
+            profile.save()
 
-    else:
-        u=User.objects.create(username=n, email=e)
-        u.set_password(p)
-        u.save()
-        context['success']='User Created Successfully..!!!!'
-    
-    return render (request, 'register.html', context)
+            context['success'] = 'User created successfully!'
+
+        return render(request, 'register.html', context)
+
+    return render(request, 'register.html')
+
 
 def user_login(request):
     if request.method=='GET':
